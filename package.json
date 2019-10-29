@@ -1,0 +1,35 @@
+{
+  "name": "todo_js2",
+  "version": "1.0.0",
+  "description": "ToDo test task",
+  "main": "index.tsx",
+  "repository": "https://github.com/AABorisov/todo_js.git",
+  "author": "AABorisov <borisov.andrew.a@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --mode development",
+    "build": "webpack --mode production"
+  },
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.3",
+    "@types/react": "^16.9.9",
+    "@types/react-dom": "^16.9.2",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "prettier": "^1.18.2",
+    "source-map-loader": "^0.2.4",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.6.4",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "dependencies": {
+    "@types/react-redux": "^7.1.5",
+    "lodash-es": "^4.17.15",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4"
+  }
+}
