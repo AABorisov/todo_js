@@ -12,4 +12,4 @@ deploy:
   provider: heroku
   app: "todo-js-2019"
   api_key:
-    secure: "6d4a73f5-a76e-4196-9fff-38f498035036"
+    secure: "HEROKU_SECRET_KEY"

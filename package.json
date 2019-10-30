@@ -19,7 +19,10 @@
     }
   },
   "lint-staged": {
-    "*.(js|tsx|ts)": ["yarn lint:fix", "git add"]
+    "*.(js|tsx|ts)": [
+      "yarn lint:fix",
+      "git add"
+    ]
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.3",
