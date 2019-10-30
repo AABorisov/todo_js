@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { addTask as addTaskAction } from '../store/taskList/actions';
 import { Task } from '../store/taskList/types';
 
+import style = require('./style.scss');
+
 interface AddTaskDispatchProps {
   addTask: (task: Task) => void;
 }
@@ -46,19 +48,39 @@ const AddTask: React.FC<AddTaskProps> = props => {
   }, 500);
 
   return (
-    <form onSubmit={onSubmit}>
-      <input ref={titleRef} type="text" id="title" placeholder="Title" />
-      <textarea ref={descriptionRef} rows={5} id="description" placeholder="Description" />
+    <form onSubmit={onSubmit} className={style.form}>
+      <input
+        ref={titleRef}
+        type="text"
+        id="title"
+        placeholder="Title"
+        title="Title"
+        className={style.titleInput}
+      />
+      <textarea
+        ref={descriptionRef}
+        rows={5}
+        id="description"
+        placeholder="Description"
+        title="Description"
+        className={style.descriptionTextarea}
+      />
       <input
         ref={importanceRef}
         type="number"
         id="importance"
+        title="Priority"
         min={1}
         max={5}
         defaultValue={3}
         onChange={onImportanceChange}
+        className={style.importanceInput}
       />
-      <button type="submit">Add Task</button>
+      <div className={style.submitButtonWrapper}>
+        <button type="submit" className={style.submitButton}>
+          Add Task
+        </button>
+      </div>
     </form>
   );
 };

@@ -1,0 +1,19 @@
+:global {
+  body {
+    min-height: 100vh;
+    z-index: 6;
+    position: relative;
+    color: #414c57;
+    font-family: Roboto,sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 23px;
+  }
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

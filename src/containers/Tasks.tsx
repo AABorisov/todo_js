@@ -13,6 +13,8 @@ import {
 } from '../store/taskList/actions';
 import { setTaskFilter as setTaskFilterAction } from '../store/taskFilter/actions';
 
+import style = require('./style.scss');
+
 interface TasksStateProps {
   taskList: ITaskList;
   taskFilter: TaskFilterState;
@@ -30,7 +32,7 @@ type TasksProps = TasksStateProps & TasksDispatchProps;
 const Tasks: React.FC<TasksProps> = props => {
   const { taskList, taskFilter, setTaskFilter, startTask, completeTask, removeTask } = props;
   return (
-    <div>
+    <div className={style.tasks}>
       <Filter taskFilter={taskFilter} setTaskFilter={setTaskFilter} />
       <TaskList
         taskList={taskList}
@@ -46,8 +48,10 @@ const filterTasks = (
   taskList: ITaskList,
   { filterTitle, filterImportance }: TaskFilterState
 ): ITaskList => {
+  const lowerCaseFilterTitle = filterTitle.trim().toLowerCase();
   return taskList.filter((task: ITask) => {
-    const matchTitle = !filterTitle || task.title.toLowerCase().includes(filterTitle);
+    const matchTitle =
+      !lowerCaseFilterTitle || task.title.toLowerCase().includes(lowerCaseFilterTitle);
     const matchImportance = filterImportance === 0 || filterImportance === task.importance;
     return matchTitle && matchImportance;
   });

@@ -2,6 +2,8 @@ import * as React from 'react';
 import Task from './Task';
 import { Task as ITask, TaskList as ITaskList } from '../store/taskList/types';
 
+import style = require('./style.scss');
+
 interface TaskListProps {
   taskList: ITaskList;
   startTask: (task: ITask) => void;
@@ -10,7 +12,7 @@ interface TaskListProps {
 }
 const TaskList: React.FC<TaskListProps> = ({ taskList, startTask, completeTask, removeTask }) => {
   return (
-    <div>
+    <div className={style.taskList}>
       {taskList.map(task => {
         return (
           <Task

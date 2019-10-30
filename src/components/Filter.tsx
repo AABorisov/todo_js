@@ -2,6 +2,8 @@ import * as React from 'react';
 import debounce from 'lodash-es/debounce';
 import { TaskFilterState } from '../store/taskFilter/types';
 
+import style = require('./style.scss');
+
 const FILTER_DEBOUNCE_TIME = 1000;
 
 interface FilterProps {
@@ -33,14 +35,24 @@ const Filter: React.FC<FilterProps> = ({
   }
 
   return (
-    <div>
-      <input type="text" defaultValue={filterTitle} onChange={onTitleChange} />
+    <div className={style.filter}>
+      <input
+        type="text"
+        defaultValue={filterTitle}
+        placeholder="Filter by title"
+        title="Filter by title"
+        onChange={onTitleChange}
+        className={style.filterTitleInput}
+      />
       <input
         type="number"
         min={0}
         max={5}
         defaultValue={filterImportance}
+        placeholder="priority"
+        title="Filter by priority"
         onChange={onImportanceChange}
+        className={style.filterImportanceInput}
       />
     </div>
   );

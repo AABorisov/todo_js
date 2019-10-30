@@ -1,0 +1,134 @@
+.app {
+  background-color: lightgray;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  //max-width: 400px;
+  width: 100%;
+  justify-content: center;
+
+  .header {
+    height: 100px;
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: lightblue;
+  }
+
+  .main {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .footer {
+    height: 100px;
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: lightblue;
+  }
+}
+
+@media (min-width: 768px) {
+  .app {
+    .main {
+      flex-direction: row;
+
+    }
+  }
+}
+
+.filter {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+
+  .filterTitleInput {
+    margin-right: 10px;
+  }
+
+  .filterImportanceInput {
+    max-width: 50px;
+  }
+}
+
+.taskList {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.task {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px 0 5px;
+
+  .startDate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: calc(30% - 28px);
+    max-width: 200px;
+  }
+
+  .title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    width: calc(30% - 28px)
+  }
+
+  .importance {
+    width: 12px;
+  }
+
+  .description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: calc(30% - 28px)
+  }
+
+  .removeButton {
+    width: 25px;
+    max-width: 25px;
+    height: 25px;
+    max-height: 25px;
+  }
+
+  .done {
+    width: 75px;
+    height: 25px;
+    max-height: 25px;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: green;
+  }
+
+  .completeButton {
+    width: 75px;
+    height: 25px;
+    max-height: 25px;
+
+  }
+
+  .startButton {
+    width: 75px;
+    height: 25px;
+    max-height: 25px;
+  }
+}
+

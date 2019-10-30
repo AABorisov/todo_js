@@ -1,0 +1,40 @@
+.form {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  padding: 10px;
+  justify-content: space-around;
+  align-content: stretch ;
+  max-width: 400px;
+  max-height: 250px;
+  background-color: lightyellow;
+
+
+  .titleInput {
+    margin-bottom: 10px;
+  }
+  .descriptionTextarea {
+    margin-bottom: 10px;
+    resize: none;
+  }
+  .importanceInput {
+    margin-bottom: 10px;
+  }
+  .submitButtonWrapper {
+    display: flex;
+    justify-content: center;
+  }
+  .submitButton {
+    width: 200px;
+  }
+}
+
+.tasks {
+  display: flex;
+  flex-grow: 3;
+  flex-direction: column;
+  padding: 10px;
+  background-color: #e2e2e2;
+  min-width: 380px;
+  max-width: 1200px;
+}
