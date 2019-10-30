@@ -1,8 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 
 export interface TaskFilterState {
-  titleFilter: string;
-  importanceFilter: number;
+  filterTitle: string;
+  filterImportance: number;
 }
 
 export const SET_TASK_FILTER = 'SET_TASK_FILTER';

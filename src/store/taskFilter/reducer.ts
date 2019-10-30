@@ -3,8 +3,8 @@
 import { SET_TASK_FILTER, TaskFilterActionTypes, TaskFilterState } from './types';
 
 const initialState: TaskFilterState = {
-  titleFilter: '',
-  importanceFilter: 0,
+  filterTitle: '',
+  filterImportance: 0,
 };
 
 export function taskFilterReducer(

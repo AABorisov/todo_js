@@ -44,11 +44,11 @@ const Tasks: React.FC<TasksProps> = props => {
 
 const filterTasks = (
   taskList: ITaskList,
-  { titleFilter, importanceFilter }: TaskFilterState
+  { filterTitle, filterImportance }: TaskFilterState
 ): ITaskList => {
   return taskList.filter((task: ITask) => {
-    const matchTitle = !titleFilter || task.title.toLowerCase().includes(titleFilter);
-    const matchImportance = importanceFilter === 0 || importanceFilter === task.importance;
+    const matchTitle = !filterTitle || task.title.toLowerCase().includes(filterTitle);
+    const matchImportance = filterImportance === 0 || filterImportance === task.importance;
     return matchTitle && matchImportance;
   });
 };

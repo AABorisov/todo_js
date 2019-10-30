@@ -10,14 +10,14 @@ interface FilterProps {
 }
 
 const Filter: React.FC<FilterProps> = ({
-  taskFilter: { titleFilter, importanceFilter },
+  taskFilter: { filterTitle, filterImportance },
   setTaskFilter,
 }) => {
-  let title = titleFilter;
-  let importance = importanceFilter;
+  let title = filterTitle;
+  let importance = filterImportance;
 
   const filterCallback = debounce(() => {
-    if (titleFilter !== title || importanceFilter !== importance) {
+    if (filterTitle !== title || filterImportance !== importance) {
       setTaskFilter({ titleFilter: title, importanceFilter: importance });
     }
   }, FILTER_DEBOUNCE_TIME);
@@ -34,12 +34,12 @@ const Filter: React.FC<FilterProps> = ({
 
   return (
     <div>
-      <input type="text" defaultValue={titleFilter} onChange={onTitleChange} />
+      <input type="text" defaultValue={filterTitle} onChange={onTitleChange} />
       <input
         type="number"
         min={0}
         max={5}
-        defaultValue={importanceFilter}
+        defaultValue={filterImportance}
         onChange={onImportanceChange}
       />
     </div>

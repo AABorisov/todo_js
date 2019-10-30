@@ -48,8 +48,8 @@ const initialStore: AppState = {
     },
   ],
   taskFilter: {
-    titleFilter: '',
-    importanceFilter: 0,
+    filterTitle: '',
+    filterImportance: 0,
   },
 };
 const configureStore = (): Store<AppState> => {

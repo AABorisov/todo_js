@@ -11,81 +11,57 @@ interface AddTaskDispatchProps {
 
 type AddTaskProps = AddTaskDispatchProps;
 
-class AddTask extends React.Component<AddTaskProps> {
-  titleRef: { value: string } | null = null;
+const AddTask: React.FC<AddTaskProps> = props => {
+  const titleRef = React.useRef<HTMLInputElement>(null);
+  const descriptionRef = React.useRef<HTMLTextAreaElement>(null);
+  const importanceRef = React.useRef<HTMLInputElement>(null);
 
-  descriptionRef: { value: string } | null = null;
-
-  importanceRef: { value: string } | null = null;
-
-  onSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
 
-    if (!this.titleRef.value.trim()) {
+    if (!titleRef.current.value.trim()) {
+      // not valid
       return;
     }
 
-    const { addTask } = this.props;
+    const { addTask } = props;
+    const titleValue = titleRef.current.value.trim();
+    const descriptionValue = descriptionRef.current.value.trim();
+    const importanceValue = +importanceRef.current.value;
 
     addTask({
-      title: this.titleRef.value.trim(),
-      description: this.descriptionRef.value.trim(),
-      importance: +this.importanceRef.value,
+      title: titleValue,
+      description: descriptionValue,
+      importance: importanceValue,
       addDate: Date.now(),
     });
 
-    this.resetFormValues();
+    const target: HTMLFormElement = event.target as HTMLFormElement;
+    target.reset();
   };
 
-  onImportanceChange = debounce(() => {
-    const value = Math.min(Math.max(+this.importanceRef.value, 1), 5);
-    this.importanceRef.value = value.toString();
+  const onImportanceChange = debounce(() => {
+    const value = Math.min(Math.max(+importanceRef.current.value, 1), 5);
+    importanceRef.current.value = value.toString();
   }, 500);
 
-  setTitleRef = (node: { value: string }): void => {
-    this.titleRef = node;
-  };
-
-  setDescriptionRef = (node: { value: string }): void => {
-    this.descriptionRef = node;
-  };
-
-  setImportanceRef = (node: { value: string }): void => {
-    this.importanceRef = node;
-  };
-
-  resetFormValues = (): void => {
-    this.titleRef.value = '';
-    this.descriptionRef.value = '';
-    this.importanceRef.value = '3';
-  };
-
-  render(): JSX.Element {
-    return (
-      <div>
-        <form onSubmit={this.onSubmit}>
-          <input ref={this.setTitleRef} type="text" id="title" placeholder="Title" />
-          <textarea
-            ref={this.setDescriptionRef}
-            rows={5}
-            id="description"
-            placeholder="Description"
-          />
-          <input
-            ref={this.setImportanceRef}
-            type="number"
-            id="importance"
-            min={1}
-            max={5}
-            defaultValue={3}
-            onChange={this.onImportanceChange}
-          />
-          <button type="submit">Add Task</button>
-        </form>
-      </div>
-    );
-  }
-}
+  return (
+    <form onSubmit={onSubmit}>
+      <input ref={titleRef} type="text" id="title" placeholder="Title" />
+      <textarea ref={descriptionRef} rows={5} id="description" placeholder="Description" />
+      <input
+        ref={importanceRef}
+        type="number"
+        id="importance"
+        min={1}
+        max={5}
+        defaultValue={3}
+        onChange={onImportanceChange}
+      />
+      <button type="submit">Add Task</button>
+    </form>
+  );
+};
 
 const mapDispatchToProps = (dispatch: Dispatch): AddTaskDispatchProps =>
   bindActionCreators(
