@@ -10,7 +10,8 @@
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "lint": "eslint \"src/**/*.ts*\"",
-    "lint:fix": "eslint \"src/**/*.ts*\" --fix"
+    "lint:fix": "eslint \"src/**/*.ts*\" --fix",
+    "test": "echo \"Success: no test specified\" && exit 0"
   },
   "husky": {
     "hooks": {
