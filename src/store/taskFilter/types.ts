@@ -1,14 +1,15 @@
+/* eslint-disable import/prefer-default-export */
+
 export interface TaskFilterState {
-  titleFilter: string
-  importanceFilter: number
+  titleFilter: string;
+  importanceFilter: number;
 }
 
-export const SET_TASK_FILTER = 'SET_TASK_FILTER'
-
+export const SET_TASK_FILTER = 'SET_TASK_FILTER';
 
 export interface SetTaskFilterAction {
-  type: typeof SET_TASK_FILTER
-  payload: TaskFilterState
+  type: typeof SET_TASK_FILTER;
+  payload: TaskFilterState;
 }
 
-export type TaskFilterActionTypes = SetTaskFilterAction
+export type TaskFilterActionTypes = SetTaskFilterAction;

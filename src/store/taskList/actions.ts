@@ -3,19 +3,20 @@ import {
   AddTaskAction,
   COMPLETE_TASK,
   CompleteTaskAction,
-  REMOVE_TASK, RemoveTaskAction,
+  REMOVE_TASK,
+  RemoveTaskAction,
   START_TASK,
   StartTaskAction,
-  Task
-} from "./types";
+  Task,
+} from './types';
 
 export function addTask(task: Task): AddTaskAction {
   return {
     type: ADD_TASK,
     payload: {
-      ...task
-    }
-  }
+      ...task,
+    },
+  };
 }
 
 export function startTask(task: Task): StartTaskAction {
@@ -23,9 +24,9 @@ export function startTask(task: Task): StartTaskAction {
     type: START_TASK,
     payload: {
       ...task,
-      startDate: Date.now()
-    }
-  }
+      startDate: Date.now(),
+    },
+  };
 }
 
 export function completeTask(task: Task): CompleteTaskAction {
@@ -33,9 +34,9 @@ export function completeTask(task: Task): CompleteTaskAction {
     type: COMPLETE_TASK,
     payload: {
       ...task,
-      completeDate: Date.now()
-    }
-  }
+      completeDate: Date.now(),
+    },
+  };
 }
 
 export function removeTask(task: Task): RemoveTaskAction {
@@ -43,7 +44,7 @@ export function removeTask(task: Task): RemoveTaskAction {
     type: REMOVE_TASK,
     payload: {
       ...task,
-      completeDate: Date.now()
-    }
-  }
+      completeDate: Date.now(),
+    },
+  };
 }

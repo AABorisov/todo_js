@@ -1,6 +1,8 @@
-import {TaskFilterActionTypes, TaskFilterState} from "./types";
+/* eslint-disable import/prefer-default-export */
 
-export const setTaskFilter = (taskFilter: TaskFilterState) : TaskFilterActionTypes => ({
+import { TaskFilterActionTypes, TaskFilterState } from './types';
+
+export const setTaskFilter = (taskFilter: TaskFilterState): TaskFilterActionTypes => ({
   type: 'SET_TASK_FILTER',
-  payload: taskFilter
-})
+  payload: taskFilter,
+});
