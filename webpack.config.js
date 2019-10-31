@@ -4,7 +4,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
 module.exports = {
-  devtool: 'source-map',
   entry: './src/index.tsx',
 
   resolve: {
@@ -22,12 +21,6 @@ module.exports = {
             loader: 'ts-loader',
           },
         ],
-      },
-      // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-      {
-        enforce: 'pre',
-        test: /\.js$/,
-        loader: 'source-map-loader',
       },
       {
         test: /\.(scss|css)$/i,
