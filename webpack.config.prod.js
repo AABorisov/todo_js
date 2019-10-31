@@ -8,7 +8,6 @@ module.exports = {
     rules: [
       {
         test: /\.(css|scss)\./,
-        include: [path.resolve(__dirname, 'src')],
         use: [
           'style-loader',
           MiniCssExtractPlugin.loader,
@@ -18,7 +17,7 @@ module.exports = {
               modules: {
                 modules: true,
                 minimize: true,
-                localIdentName: '[name]__[hash:base64:5]',
+                localIdentName: '[folder]_[name]__[local]',
               },
               importLoaders: 1,
             },
