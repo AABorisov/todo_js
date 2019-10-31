@@ -1,21 +1,32 @@
 const path = require('path');
+const merge = require('webpack-merge');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const prodConf = require('./webpack.config.prod');
+const devConf = require('./webpack.config.dev');
 
-
-module.exports = {
-  devtool: 'source-map',
+const config = {
   entry: './src/index.tsx',
-
+  output: {
+    path: path.resolve('dist'),
+    filename: 'bundle.js',
+    publicPath: '/',
+  },
   resolve: {
-    // Add '.ts' and '.tsx' as resolvable extensions.
     extensions: ['.ts', '.tsx', '.js'],
   },
-
   module: {
     rules: [
       {
-        test: /\.ts(x?)$/,
+        test: /\.(png|svg)$/,
+        include: [path.resolve(__dirname, 'public')],
+        use: 'url-loader',
+      },
+      {
+        test: /\.(ts|tsx)$/,
+        include: [path.resolve(__dirname, 'src')],
         exclude: /node_modules/,
         use: [
           {
@@ -23,35 +34,16 @@ module.exports = {
           },
         ],
       },
-      // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-      {
-        enforce: 'pre',
-        test: /\.js$/,
-        loader: 'source-map-loader',
-      },
-      {
-        test: /\.(scss|css)$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          // Creates `style` nodes from JS strings
-          // 'style-loader',
-          // Translates CSS into CommonJS
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                localIdentName: '[folder]_[name]__[local]',
-              },
-              importLoaders: 1,
-            },
-          },
-          // Compiles Sass to CSS
-          'sass-loader',
-        ],
-      },
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
+    new CopyPlugin([
+      {
+        from: 'public',
+        to: '',
+      },
+    ]),
     new HtmlWebPackPlugin({
       template: './public/index.html',
       filename: './index.html',
@@ -62,9 +54,14 @@ module.exports = {
       ignoreOrder: false,
     }),
   ],
-  output: {
-    path: path.resolve('dist'),
-    filename: 'bundle.js',
-    publicPath: '/',
-  },
 };
+
+let resultConfig;
+
+if (process.env.NODE_ENV === 'production') {
+  resultConfig = merge(config, prodConf);
+} else {
+  resultConfig = merge(config, devConf);
+}
+
+module.exports = resultConfig;
